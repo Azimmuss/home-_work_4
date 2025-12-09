@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404  
 from django.http import HttpResponse
 from datetime import datetime
+from .models import Book  
+
 
 def helloWordViews(request):
     writers = [
@@ -27,9 +29,19 @@ def quotesView(request):
         'Оскар Уайльд: «Будь собой — остальные роли уже заняты.»',
         'Рэй Брэдбери: «Любите то, что делаете, иначе ничего не получится.»',
     ]
-
     return HttpResponse("<br>".join(quotes))
+
 
 def timeView(request):
     now = datetime.now().strftime("%H:%M:%S  %d.%m.%Y")
     return HttpResponse(f"Текущее системное время: {now}")
+
+
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, "books/book_list.html", {"books": books})
+
+
+def book_detail(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    return render(request, "books/book_detail.html", {"book": book})

@@ -1,0 +1,11 @@
+<h1>Список книг</h1>
+
+<ul>
+    {% for b in books %}
+        <li>
+            <a href="{% url 'book_detail' b.pk %}">
+                {{ b.title }} — {{ b.author }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
