@@ -2,6 +2,11 @@
 
 <h1>Список книг</h1>
 
+
+<p>
+    <a href="{% url 'book_create' %}"> Добавить книгу</a>
+</p>
+
 <ul>
     {% for b in books %}
         <li>

@@ -1,0 +1,13 @@
+{% include "header.html" %}
+
+<h2>{{ form.instance.pk|yesno:"Редактировать книгу,Добавить книгу" }}</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+</form>
+
+<a href="{% url 'book_list' %}">Назад</a>
+
+{% include "footer.html" %}
