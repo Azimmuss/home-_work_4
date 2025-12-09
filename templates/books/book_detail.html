@@ -1,3 +1,5 @@
+{% include "header.html" %}
+
 <h1>{{ book.title }}</h1>
 
 <p><strong>Автор:</strong> {{ book.author }}</p>
@@ -6,3 +8,20 @@
 <p><strong>Описание:</strong> {{ book.description }}</p>
 
 <a href="{% url 'book_list' %}">← Назад</a>
+
+<hr>
+<h2>Отзывы</h2>
+
+{% if book.reviews.all %}
+    {% for r in book.reviews.all %}
+        <div style="border:1px solid #ccc; padding:10px; margin:10px 0;">
+            <strong>Оценка:</strong> {{ r.rating }}/5 <br>
+            <strong>Отзыв:</strong> {{ r.text }} <br>
+            <small>Создан: {{ r.created_at }}</small>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Пока нет отзывов.</p>
+{% endif %}
+
+{% include "footer.html" %}
