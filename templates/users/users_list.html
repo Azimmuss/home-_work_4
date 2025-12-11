@@ -1,0 +1,9 @@
+<h2>Все зарегистрированные пользователи</h2>
+
+<ul>
+    {% for u in users %}
+        <li>{{ u.username }} — {{ u.email }} — {{ u.city }}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'logout' %}">Выйти</a>
