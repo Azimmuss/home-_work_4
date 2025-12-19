@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Книги{% endblock %}
+
+{% block content %}
+<h1>Список книг</h1>
+
+<form method="get">
+    <input type="text" name="q" placeholder="Поиск">
+    <button>Найти</button>
+</form>
+
+<a href="/books/add/">➕ Добавить книгу</a>
+
+<ul>
+{% for book in books %}
+    <li>
+        <a href="/books/{{ book.id }}/">{{ book.title }}</a>
+    </li>
+{% endfor %}
+</ul>
+
+{% if is_paginated %}
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">←</a>
+    {% endif %}
+    {{ page_obj.number }}/{{ page_obj.paginator.num_pages }}
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">→</a>
+    {% endif %}
+{% endif %}
+{% endblock %}

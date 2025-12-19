@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Проект{% endblock %}</title>
+</head>
+<body>
+
+<header>
+    <a href="/books/">Книги</a> |
+    <a href="/users/">Пользователи</a> |
+    <a href="/clothes/male/">Одежда</a> |
+    <a href="/passport/add/">Паспорт</a>
+    <hr>
+</header>
+
+{% block content %}{% endblock %}
+
+<hr>
+<footer>© GEEKS 2025</footer>
+
+</body>
+</html>

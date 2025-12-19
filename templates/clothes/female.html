@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% extends 'base.html' %}
+{% block content %}
+<h1>Женская одежда</h1>
+{% for c in object_list %}
+<p>{{ c.title }} — {{ c.price }}</p>
+{% endfor %}
+{% endblock %}
+</title>
+</head>
+<body>
+
+</body>
+</html>
